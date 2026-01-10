@@ -1,17 +1,21 @@
-import db from "db-local";
+import DBLocal from "db-local";
 import crypto from "crypto";
-import jwt from "jsonwebtoken";
-const {Schema} = db;
+import bcrypt from "bcrypt";
+
+
+
+/*la base de datos */
+const {Schema} = new DBLocal({path: "./db"});
 
 /* esquema de usuario */
-const userSchema = new Schema({
+const User = Schema("User",{
+    _id: {type: String, required: true},
     username: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
 }, {timestamps: true});
 
-/* modelo de usuario */
-const User = db.model("User", userSchema);
+
 
 /* crear usuario */
 export class UserRepository {
@@ -21,16 +25,16 @@ export class UserRepository {
         if (typeof username !== "string" || typeof email !== "string" || typeof password !== "string") {
             throw new Error("Invalid username, email or password");
         }
-        if (username.length < 3 || username.length > 20) {
+        if (typeof username.length < 3 || username.length > 20) {
             throw new Error("Username must be between 3 and 20 characters");
         }
-        if (email.length < 3 || email.length > 50) {
+        if (typeof email.length < 3 || email.length > 50) {
             throw new Error("Email must be between 3 and 50 characters");
         }
-        if (password.length < 8 || password.length > 20) {
+        if (typeof password.length < 8 || password.length > 20) {
             throw new Error("Password must be between 8 and 20 characters");
         }
-        if (!email.includes("@")) {
+            if (!email.includes("@")) {
             throw new Error("Invalid email");
         }
         
@@ -38,39 +42,37 @@ export class UserRepository {
 
 
 
-
-
         
         /* verificar si el usuario ya existe */
-        const existingUser = await User.findOne({username});
-        if (existingUser) {
+        const user = User.findOne({username});
+        if (user) {
             throw new Error("Username already exists");
         }
         
-        const existingEmail = await User.findOne({email});
-        if (existingEmail) {
+        const Email = await User.findOne({email});
+        if (Email) {
             throw new Error("Email already exists");
         }
 
 
-
-
-
-
-
-
+const id = crypto.randomUUID();
+const hashedPassword = await bcrypt.hash(password, 10);
 
 
         /* crear nuevo usuario */
-        const user = await User.create({
+      User.create({
+        _id: id,
             username,
             email,
-            password
-        });
+            password: hashedPassword
+        }).save();
 
-        return user;
+        return id;
     } catch (error) {
         throw new Error(error.message);
     }
    }
 }
+
+
+

@@ -1,7 +1,7 @@
 import express from "express";
+import { UserRepository } from "./user-repo.js";
 
 const app = express();
-
 app.use(express.json())
 
 const PORT = process.env.PORT ?? 3000;
@@ -16,9 +16,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("hola estrellita, la tierra te dice hola");
 });
-
-
-
 
 
 
@@ -39,15 +36,16 @@ app.post("/login", (req, res) => {
 
 
 /* registro */
-app.post("/register", (req, res) => {
-     const { name, email, password } = req.body;
-     console.log(req.body);
-   
-     try {
-        const id = UserRepository.create({name, email, password});
-        res.send({id});
+app.post("/register", async (req, res) => {
+    const { username, email, password } = req.body;
+    console.log(req.body);    
+  
+    try {
+      const id = await UserRepository.create({username, email, password});
+      res.send({id});
     } catch (error) {
-        res.status(500).send("registro fallido papa");
+      console.error("Error en registro:", error);
+      res.status(500).send(error.message);
     }
 });
 
@@ -81,12 +79,6 @@ app.get("/protected", (req, res) => {
 
 
 
-
-
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 
 
