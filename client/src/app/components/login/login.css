@@ -1,0 +1,209 @@
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #ffffff;
+}
+
+.login-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f8fafc;
+}
+
+.login-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.login-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.login-form h2 {
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.social-login {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.social-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.social-btn.google {
+  color: #ea4335;
+  border-color: #ea4335;
+}
+
+.social-btn.google span {
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBkPSJNMjEgMTFIMTNWMjFIMTBWMjFIMTIuNVYxMUgyMW0tNS41IDBIMTJWNjIuNUgxOCIgc3R5bGU9ImZpbGw6IzIzNDU2NztmaWxsLXJ1bGU6ZXZlbm9kZCIvPgo8L3N2Zz4=') no-repeat left center;
+  padding-left: 2rem;
+  background-size: 1.5rem;
+}
+
+.social-btn.facebook {
+  color: #1877f2;
+  border-color: #1877f2;
+}
+
+.social-btn.facebook span {
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBkPSJNMTkgMjFoLTJ2LTdjMC0xLjctMS4zLTIuOS0yLjktMy4xLTEuNi0wLjItMi45LTAuNy0zLjEtMi45SDlWMjFIMTl6IiBzdHlsZT0iZmlsbDojMjM0NTY3O2ZpbGwtcnVsZTpldmVub2RkIi8+Cjwvc3ZnPg==') no-repeat left center;
+  padding-left: 2rem;
+  background-size: 1.5rem;
+}
+
+.social-btn.apple {
+  color: #000000;
+  border-color: #000000;
+}
+
+.social-btn.apple span {
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBkPSJNMTIgMTJjMCAyLjQtMS41IDQuMi0zLjQgNC4yLTEuOSAwLTMuNC0xLjgtMy40LTQuMkM1LjIgOS42IDYuNyA3LjggOC42IDcuOFMxMiAxMiAxMiAxMnoiIHN0eWxlPSJmaWxsOiMyMzQ1Njc7ZmlsbC1ydWxlOmV2ZW5vZGQiLz4KPC9zdmc+') no-repeat left center;
+  padding-left: 2rem;
+  background-size: 1.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.divider span {
+  padding: 0 1rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.btn-login:hover:not(:disabled) {
+  background-color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.btn-login:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.forgot-password {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.forgot-password a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.register-link {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.register-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.register-link a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}

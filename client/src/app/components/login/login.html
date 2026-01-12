@@ -1,0 +1,81 @@
+<div class="login-container">
+  <div class="login-image">
+    <img src="/assets/images/1200.jpg" alt="AirTM" />
+  </div>
+  
+  <div class="login-form">
+    <h2>INICIA SESIÓN</h2>
+
+    <!-- Botones de login social -->
+    <div class="social-login">
+      <button class="social-btn google" (click)="loginWithGoogle()">
+        <span>Google</span>
+      </button>
+      <button class="social-btn facebook" (click)="loginWithFacebook()">
+        <span>Facebook</span>
+      </button>
+      <button class="social-btn apple" (click)="loginWithApple()">
+        <span>Apple</span>
+      </button>
+    </div>
+
+    <div class="divider">
+      <hr>
+      <span>o</span>
+      <hr>
+    </div>
+
+    <!-- Formulario de login -->
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="credentials.email" 
+          name="email" 
+          placeholder="Ingresa tu correo"
+          required
+          #emailInput="ngModel"
+          class="form-control"
+        >
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+          Email es requerido
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+          type="password" 
+          id="password"
+          [(ngModel)]="credentials.password" 
+          name="password" 
+          placeholder="Ingresa tu contraseña"
+          required
+          #passwordInput="ngModel"
+          class="form-control"
+        >
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+          Contraseña es requerida
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        [disabled]="!loginForm.form.valid || isLoading"
+        class="btn-login"
+      >
+        {{ isLoading ? 'Iniciando sesión...' : 'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <div class="forgot-password">
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div class="register-link">
+      <p>¿Aún no tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+    </div>
+  </div>
+</div>
